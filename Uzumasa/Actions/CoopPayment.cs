@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Uzumasa.Actions
 {
-    public class CoopPayment : Payment
+    public class CoopPayment : Payment, IBalanceAction
     {
         public CoopPayment()
             : base(PaymentMethod.COOP)

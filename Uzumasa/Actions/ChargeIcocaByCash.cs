@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Uzumasa.Actions
 {
-    public class ChargeIcocaByCash : ChargeByCash
+    public class ChargeIcocaByCash : ChargeByCash, IBalanceAction
     {
         public ChargeIcocaByCash()
             : base(PaymentMethod.ICOCA)

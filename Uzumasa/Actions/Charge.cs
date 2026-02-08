@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Uzumasa.Actions
 {
-    public class Charge : BalanceAction
+    public class Charge : BalanceAction, IBalanceAction
     {
         public Charge(PaymentMethod charged, PaymentMethod chargeMethod)
             : base()

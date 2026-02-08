@@ -6,7 +6,7 @@ using Uzumasa.Models;
 
 namespace Uzumasa.Actions
 {
-    public class IncomeCash : BalanceAction
+    public class IncomeCash : BalanceAction, IBalanceAction
     {
         public IncomeCash()
             : base("IncomeCash", TriState.StateTrue, TriState.StateNeutral, TriState.StateNeutral, TriState.StateNeutral)

@@ -9,17 +9,17 @@ using Uzumasa.Models;
 
 namespace Uzumasa.Actions
 {
-    public class BalanceAction
+    public class BalanceAction : IBalanceAction
     {
         /// <summary>
         /// The title of action.
         /// </summary>
-        public string Title { get; protected set; }
+        public string Title { get; set; }
 
-        protected TriState CashState { get; init; }
-        protected TriState IcocaState { get; init; }
-        protected TriState NanacoState { get; init; }
-        protected TriState CoopState { get; init; }
+        public TriState CashState { get; init; }
+        public TriState IcocaState { get; init; }
+        public TriState NanacoState { get; init; }
+        public TriState CoopState { get; init; }
 
         public BalanceAction(string title, TriState cashState, TriState icocaState, TriState nanacoState, TriState coopState)
         {
@@ -58,11 +58,6 @@ namespace Uzumasa.Actions
             }
         }
 
-        /// <summary>
-        /// Sets the balance value as the action determines.
-        /// </summary>
-        /// <param name="datumn">The datumn to be set.</param>
-        /// <returns>Returns <see cref="true"/> if the function is executed successfully; otherwise, returns <see cref="false"/>.</returns>
         public bool Execute(ref Datumn datumn, double value)
         {
             try

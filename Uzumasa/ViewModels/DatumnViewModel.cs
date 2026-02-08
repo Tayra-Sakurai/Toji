@@ -66,9 +66,9 @@ namespace Uzumasa.ViewModels
         }
 
         private double balance = 0;
-        private BalanceAction action;
+        private IBalanceAction action;
 
-        public BalanceAction Action
+        public IBalanceAction Action
         {
             get
             {

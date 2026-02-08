@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Uzumasa.Actions
 {
-    public class NanacoPayment : Payment
+    public class NanacoPayment : Payment, IBalanceAction
     {
         public NanacoPayment()
             : base(PaymentMethod.nanaco)
