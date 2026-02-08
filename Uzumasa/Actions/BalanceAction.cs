@@ -53,7 +53,7 @@ namespace Uzumasa.Actions
         {
             set
             {
-                ResourceLoader loader = new();
+                ResourceLoader loader = new("Actions");
                 Title = loader.GetString(value);
             }
         }

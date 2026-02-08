@@ -8,9 +8,11 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Uzumasa.Actions;
 using Uzumasa.Models;
 using Uzumasa.ViewModels;
 using Windows.Foundation;
@@ -29,6 +31,21 @@ namespace Toji.Views
         private DatumnViewModel? viewModel;
 
         private PageCommand PageCommand { get; }
+
+        private ObservableCollection<IBalanceAction> balanceActions =
+            [
+            new IncomeCash("IncomeCash"),
+            new ChargeIcocaByCash("ChargeIcocaByCash"),
+            new ChargeNanacoByCash("ChargeNanacoByCash"),
+            new ChargeCoopByCash("ChargeCoopByCash"),
+            new CashPayment("PayByCash"),
+            new IcocaPayment("PayByIcoca"),
+            new NanacoPayment("PayByNanaco"),
+            new CoopPayment("PayByCoop"),
+            new PointChargeIcoca("PointChargeIcoca"),
+            new PointChargeNanaco("PointChargeNanaco"),
+            new PointChargeCoop("PointChargeCoop")
+            ];
 
         public DetailPage()
         {

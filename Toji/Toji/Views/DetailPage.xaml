@@ -31,5 +31,7 @@
                     SelectedTime="{x:Bind viewModel.Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox x:Uid="Item" Grid.Row="3" Grid.ColumnSpan="3"
                  Text="{x:Bind viewModel.Item}"/>
+        <ComboBox x:Uid="Action" Grid.Row="4" Grid.ColumnSpan="3"
+                  ItemsSource="{x:Bind balanceActions}"/>
     </Grid>
 </Page>
