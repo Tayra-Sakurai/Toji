@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Toji.Views.DataPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Toji.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Uzumasa.Models"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+          Padding="12,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{x:Bind viewModel.Data}"
+                  x:Name="SuperListView">
+            <ListView.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="144"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Uid="IdCol"/>
+                    <TextBlock x:Uid="DateTimeCol" Grid.Column="1"/>
+                    <TextBlock x:Uid="ItemCol" Grid.Column="2"/>
+                    <TextBlock x:Uid="CashCol" Grid.Column="3"/>
+                    <TextBlock x:Uid="IcocaCol" Grid.Column="4"/>
+                    <TextBlock x:Uid="NanacoCol" Grid.Column="5"/>
+                    <TextBlock x:Uid="CoopCol" Grid.Column="6"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Datumn">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="144"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{x:Bind Id}"/>
+                        <TextBlock Grid.Column="1" Text="{x:Bind DateTime}"/>
+                        <TextBlock Grid.Column="2" Text="{x:Bind Item}"/>
+                        <TextBlock Grid.Column="3" Text="{x:Bind Cash}"/>
+                        <TextBlock Grid.Column="4" Text="{x:Bind Icoca}"/>
+                        <TextBlock Grid.Column="5" Text="{x:Bind Nanaco}"/>
+                        <TextBlock Grid.Column="6" Text="{x:Bind Coop}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style BasedOn="{StaticResource DefaultListViewItemStyle}"
+                       TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <CommandBar DefaultLabelPosition="Right"
+                    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                    Grid.Row="1">
+            <AppBarButton x:Uid="AddCmdBtn"
+                          Icon="Add" Command="{x:Bind viewModel.AddCommand}"/>
+            <AppBarButton x:Uid="DelCmdBtn"
+                          Icon="Delete" Command="{x:Bind viewModel.RemoveCommand}"
+                          CommandParameter="{Binding SelectedItem, ElementName=SuperListView}"/>
+            <AppBarButton x:Uid="SyncCmdBtn"
+                          Icon="Sync" Command="{x:Bind viewModel.LoadCommand}"/>
+            <AppBarButton x:Uid="DetailCmdBtn"
+                          Icon="Document" Command="{x:Bind ToDetail}"
+                          CommandParameter="{Binding SelectedItem, ElementName=SuperListView}"/>
+        </CommandBar>
+    </Grid>
+</Page>

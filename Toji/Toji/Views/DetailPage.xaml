@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Toji.Views.DetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Toji.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="12,16"
+          Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Uid="DetailTitle" Style="{StaticResource TitleTextBlockStyle}" Grid.ColumnSpan="3"/>
+        <TextBlock x:Uid="DetailDesc" Style="{StaticResource BodyTextBlockStyle}" 
+                   TextWrapping="WrapWholeWords" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <CalendarDatePicker x:Uid="Date" Grid.Row="2" Grid.Column="0"
+                            Date="{x:Bind viewModel.Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TimePicker x:Uid="Time" Grid.Row="2" Grid.Column="1"
+                    SelectedTime="{x:Bind viewModel.Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Uid="Item" Grid.Row="3" Grid.ColumnSpan="3"
+                 Text="{x:Bind viewModel.Item}"/>
+    </Grid>
+</Page>
